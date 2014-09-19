@@ -1,6 +1,6 @@
 Goodservice::Application.routes.draw do
   resources :games
-  root :to => "games#index"
+  root :to => "games#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
