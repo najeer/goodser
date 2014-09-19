@@ -1,5 +1,5 @@
-<%= stylesheet_link_tag "jquery-ui","style.css" %>
-<%= javascript_include_tag  "jquery-1.9.1.js", 'jquery-ui', 'jquery.validate.js', 'jquery.validate.min.js',"demo.js",'jquery.mim.js',"jquery.timer.js" %>
+<%= stylesheet_link_tag "jquery-ui" %>
+<%= javascript_include_tag  "jquery-1.9.1.js", 'jquery-ui', 'jquery.validate.js', 'jquery.validate.min.js','demo.js','jquery.timer.js' %>
 <%= form_for @game, :validate => true,:html => { :class => 'form-horizontal game_form' } do |f| %>
 <div width=90%>
 <table class="table table-striped", border=2px, border:1px, align=center, width=90%>
@@ -10,17 +10,18 @@
       <th>Place</th>
       <th>Animal</th>
       <th>Thing</th>
+      <th>Time Count</th>
       <th>Time</th>
-      <th>time count</th>
+      
     </tr>
 <tr >
-  <th><input type='button' class ='btn btn-info' value='Play' onclick='Example1.Timer.toggle();' /></th>
-        <th><%= f.text_field :name, :class => 'text_field' %></th>
-        <th><%= f.text_field :place, :class => 'text_field' %></th>
-        <th><%= f.text_field :animal, :class => 'text_field' %></th>
-        <th><%= f.text_field :thing, :class => 'text_field' %></th>
-        <th><span id="stopwatch">00:00:00</span></th>
-       <th><%= f.submit "Done", :class => 'btn btn-info', :onclick =>'Example1.resetStopwatch();' %></th>
+  <td><input type='button' class ='btn btn-info' value='Play' onclick='Example1.Timer.toggle();' /></td>
+        <td><%= f.text_field :name, :class => 'text_field' %></td>
+        <td><%= f.text_field :place, :class => 'text_field' %></td>
+        <td><%= f.text_field :animal, :class => 'text_field' %></td>
+        <td><%= f.text_field :thing, :class => 'text_field' %></td>
+        <td id="stopwatch">00:00:00</td>
+       <td><%= f.submit "Done", :class => 'btn btn-info', :onclick =>'Example1.resetStopwatch();' %></td>
     </tr>
 
     <span id="stopwatch">00:00:00</span>
