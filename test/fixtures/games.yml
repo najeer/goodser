@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  place: MyString
+  animal: MyString
+  thing: MyString
+  time: 1
+
+two:
+  name: MyString
+  place: MyString
+  animal: MyString
+  thing: MyString
+  time: 1
