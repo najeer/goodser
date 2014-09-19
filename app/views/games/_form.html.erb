@@ -1,36 +1,36 @@
+<%= stylesheet_link_tag "jquery-ui","style.css" %>
+<%= javascript_include_tag  "jquery-1.9.1.js", 'jquery-ui', 'jquery.validate.js', 'jquery.validate.min.js',"demo.js",'jquery.mim.js',"jquery.timer.js" %>
 <%= form_for @game, :validate => true,:html => { :class => 'form-horizontal game_form' } do |f| %>
-<table class="table table-striped", border=2px, border:1px>
+<div width=90%>
+<table class="table table-striped", border=2px, border:1px, align=center, width=90%>
   <thead>
     <tr>
       <th>Letter</th>
-      <th><%= f.label :name, :class => 'control-label' %>
-      </th>
-      <th><%= f.label :place, :class => 'control-label' %>
-      </th>
-      <th><%= f.label :animal, :class => 'control-label' %>
-      </th>
-      <th><%= f.label :thing, :class => 'control-label' %>
-      </th>
-      <th><%= f.label :time, :class => 'control-label' %>
-      </th>
-      
+      <th>Name</th>
+      <th>Place</th>
+      <th>Animal</th>
+      <th>Thing</th>
+      <th>Time</th>
+      <th>time count</th>
     </tr>
-  <tr><th><%= submit_tag "play", :class => 'btn btn-info' %></th>
-        <th><div><%= f.text_field :name, :class => 'text_field' %></div></th>
-        <th><div><%= f.text_field :place, :class => 'text_field' %></div></th>
-        <th><div><%= f.text_field :animal, :class => 'text_field' %></div></th>
-        <th><div><%= f.text_field :thing, :class => 'text_field' %></div></th>
-        <th><%= f.submit "Done", :class => 'btn btn-info' %></th>
+<tr >
+  <th><input type='button' class ='btn btn-info' value='Play' onclick='Example1.Timer.toggle();' /></th>
+        <th><%= f.text_field :name, :class => 'text_field' %></th>
+        <th><%= f.text_field :place, :class => 'text_field' %></th>
+        <th><%= f.text_field :animal, :class => 'text_field' %></th>
+        <th><%= f.text_field :thing, :class => 'text_field' %></th>
+        <th><span id="stopwatch">00:00:00</span></th>
+       <th><%= f.submit "Done", :class => 'btn btn-info', :onclick =>'Example1.resetStopwatch();' %></th>
     </tr>
+
+    <span id="stopwatch">00:00:00</span>
   </thead></table>
-  
+ </div> 
 <% end %>
 
 
-<%= stylesheet_link_tag "jquery-ui" %>
-<%= javascript_include_tag  "jquery-1.9.1.js", 'jquery-ui', 'jquery.validate.js', 'jquery.validate.min.js' %>
-<script>
-  
+
+<script>  
 function  validate_function(){
   
 $(".game_form").validate({
@@ -207,7 +207,7 @@ function geolocate() {
     </style>
   </head>
 
-  <body onload="initialize()"><div>City:
+  <body onload="initialize()"><div><h5>City:</h5>
     <div id="locationField">
       <input id="autocomplete" placeholder="Enter your city"
              onFocus="geolocate()" type="text"></input></div>
