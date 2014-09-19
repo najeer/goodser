@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag "jquery-ui" %>
-<%= javascript_include_tag  "jquery-1.9.1.js", 'jquery-ui', 'jquery.validate.js', 'jquery.validate.min.js','demo.js','jquery.timer.js' %>
+<%= javascript_include_tag  "jquery-1.9.1.js", 'jquery-ui', 'jquery.validate.js', 'jquery.validate.min.js'%>
 <%= form_for @game, :validate => true,:html => { :class => 'form-horizontal game_form' } do |f| %>
 <div width=90%>
-<table class="table table-striped", border=2px, border:1px, align=center, width=90%>
+<table class="table table-striped", border=2px, border:1px, align="center", width=90%>
   <thead>
     <tr>
       <th>Letter</th>
@@ -15,22 +15,65 @@
       
     </tr>
 <tr >
-  <td><input type='button' class ='btn btn-info' value='Play' onclick='Example1.Timer.toggle();' /></td>
-        <td><%= f.text_field :name, :class => 'text_field' %></td>
-        <td><%= f.text_field :place, :class => 'text_field' %></td>
-        <td><%= f.text_field :animal, :class => 'text_field' %></td>
-        <td><%= f.text_field :thing, :class => 'text_field' %></td>
-        <td id="stopwatch">00:00:00</td>
-       <td><%= f.submit "Done", :class => 'btn btn-info', :onclick =>'Example1.resetStopwatch();' %></td>
-    </tr>
+  <td><input type='button' class ='btn playing' value='Play' onclick="timer()" /></td>
+  <td><%= f.text_field :name, :class => 'input-large input-large-altered' %></td>
+  <td><%= f.text_field :place, :class => 'input-large input-large-altered' %></td>
+  <td><%= f.text_field :animal, :class => 'input-large input-large-altered' %></td>
+  <td><%= f.text_field :thing, :class => 'input-large input-large-altered' %></td>
+  <td><%= f.text_field :time, :id => 'but', :class => 'input-large input-large-altered1', :readOnly => true %></td>
+  <td><%= f.submit "Done", :class => 'btn done' %></td>
+</tr>
 
-    <span id="stopwatch">00:00:00</span>
+    
+
   </thead></table>
  </div> 
+ <div align="right"><%= link_to t('.Show Games', :default => t("helpers.links.Show Games")),
+              games_path, :class => 'btn btn-primary'  %>
+
+</div>
 <% end %>
 
+<script type="text/javascript">
 
 
+$('.playing').click(function(){
+  
+  $('.playing').attr("disabled", "disabled");
+  $('.done').attr("disabled", false);
+});
+ 
+$('.done').submit(function(){
+  $('.done').attr("disabled", "disabled");
+  $('.done').onclick("stoptimer()");
+  $('.playing').attr("disabled", false);
+});
+
+
+
+
+$(document).ready(function(){
+
+  $('.done').attr("disabled", "disabled");
+    
+});
+</script>
+
+
+<script type="text/javascript">
+var count=0;
+var x;
+function timer(){
+x=setTimeout("timer()",1000);
+count=count+1;
+document.getElementById("but").value=count;
+}
+
+function stoptimer(){
+clearTimeout(x);
+}
+
+</script>
 <script>  
 function  validate_function(){
   
